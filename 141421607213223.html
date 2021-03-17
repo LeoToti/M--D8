@@ -53,11 +53,15 @@ The have a list of tasks and can, at any time, add a new one, delete one or sort
         Create a button "Remove Last Task" to trigger the method "removeLast"
         -->
 
+    <input type="button" value="Remove Last Task" onclick="removeLast()" />
+
     <!-- EXERCISE 4
         Create a button "Remove First Task" to trigger the method "removeFirst"
         -->
 
-    <ul id="myTaskList"></ul>
+    <input type="button" value="Remove First Task" onclick="removeFirst()" />
+
+    <ul id="myTaskList" class='myTaskListCutsom'></ul>
 
     <hr />
 
@@ -80,23 +84,63 @@ The have a list of tasks and can, at any time, add a new one, delete one or sort
                 - Use the document.createElement to create the new List Item
                 - Append the child to the UL
             */
+      
+      let addNewTask = function(){
+        let newInput = document.getElementById("newTask").value
+        let newElement = document.createElement("li")
+        let ulElement = document.getElementById("myTaskList")
+        newElement.innerHTML = newInput
+        ulElement.appendChild(newElement)
+      }
 
       /* EXERCISE 6: 
                 Create a method "removeLast" which removes the last item from the task list
             */
 
+        let removeLast = function() {
+          let taskListUl = document.getElementById("myTaskList")
+          taskListUl.removeChild(taskListUl.childNodes[0])
+        }
+        
+
       /* EXERCISE 7: 
                 Create a method "removeFirst" which removes the first item from the task list
             */
+          
+        let removeFirst = function() {
+          let taskListUl = document.getElementById("myTaskList")
+          taskListUl.removeChild(taskListUl.childNodes)
+          
+        }
 
       /* EXERCISE 8: 
                Create a method "getTasksAsArray" which returns, and prints to the console an array containing the tasks as string
             */
+        
+        let getTasksAsArray = function(){
+          let listTask = document.querySelectorAll("#myTaskList li")
+          let array = []
+          for (task of listTask){
+              array.push(task.textContent)
+          }
+          return array
+        }
+
+        
 
       /* EXERCISE 9:
                Create a method "changeTaskBackgroundColor" which takes the color from the color picker with an 
                onchange event listener ad applies it as background to every list item
             */
+        
+        let changeTaskBackgroundColor = function () {
+          let colorPicker = document.getElementById("colorPicker").value
+          console.log(colorPicker)
+          document.getElementById("myTaskList").style.backgroundColor = colorPicker
+
+
+        }
+          
 
       /* EXTRA */
 
@@ -109,6 +153,32 @@ The have a list of tasks and can, at any time, add a new one, delete one or sort
                - Break the code into many function for semplicity 
                - Reuse the functions previously created
             */
+
+            function bubble_Sort()
+{
+    let swapp;
+    
+    let x= getTasksAsArray();
+    let n = x.length-1;
+    do {
+        swapp = false;
+        for (let i=0; i < n; i++)
+        {
+            if (x[i].textContent < x[i+1].textContent)
+            {
+               let temp = x[i].textContent;
+               x[i].textContent = x[i+1].textContent;
+               x[i+1].textContent = temp;
+               swapp = true;
+            }
+        }
+        n--;
+    } while (swapp);
+ return x; 
+}
+    
+          
+
     </script>
   </body>
 </html>
