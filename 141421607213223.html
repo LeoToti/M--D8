@@ -156,30 +156,30 @@ The have a list of tasks and can, at any time, add a new one, delete one or sort
 
             function bubble_Sort()
 {
-    let swapp;
+              let swapp;
     
-    let x= getTasksAsArray();
-    console.log(x)
-    let n = x.length-1;
-    do {
-        swapp = false;
-        for (let i=0; i < n; i++)
+              let x= getTasksAsArray();
+              console.log(x)
+              let n = x.length-1;
+               do {
+                  swapp = false;
+                  for (let i=0; i < n; i++)
         
-        {
+                  {
           
-            if (x[i] > x[i+1])
-            {
-               let temp = x[i]
-               x[i] = x[i+1]
-               x[i+1] = temp
-               swapp = true
+                   if (x[i] > x[i+1])
+                   {
+                     let temp = x[i]
+                     x[i] = x[i+1]
+                    x[i+1] = temp
+                    swapp = true
                
-            }
-        }
-        n--;
-    } while (swapp);
- return x; 
-}
+                     }
+                   }
+                    n--;
+                 } while (swapp);
+                return x; 
+                }
     
           
 
